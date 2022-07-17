@@ -164,6 +164,30 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$step.parentElement.hidden = this.currentStep >= 5;
 
       // TODO: get data from inputs and show them in summary
+
+      const donationForm = document.getElementById("donationForm");
+      const streetSummary = document.getElementById("streetSummary");
+      const citySummary = document.getElementById("citySummary");
+      const zipCodeSummary = document.getElementById("zipCodeSummary");
+      const pickUpDateSummary = document.getElementById("pickUpDateSummary");
+      const pickUpTimeSummary = document.getElementById("pickUpTimeSummary");
+      const commentsSummary = document.getElementById("commentsSummary");
+      const qtySummary = document.getElementById("quantitySummary");
+      const institutionSummary = document.getElementById("institutionSummary")
+
+      streetSummary.innerText = donationForm.elements.street.value;
+      citySummary.innerText = donationForm.elements.city.value;
+      zipCodeSummary.innerText = donationForm.elements.zipCode.value;
+      pickUpDateSummary.innerText = donationForm.elements.pickUpDate.value;
+      pickUpTimeSummary.innerText = donationForm.elements.pickUpTime.value;
+      commentsSummary.innerText = donationForm.elements.pickUpComment.value;
+      qtySummary.innerText = donationForm.elements.quantity.value + " worki";
+      institutionSummary.innerText ="Dla fundacji " + donationForm.elements.institution.value;
+
+
+
+
+
     }
 
   }
