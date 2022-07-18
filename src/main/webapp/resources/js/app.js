@@ -181,12 +181,30 @@ document.addEventListener("DOMContentLoaded", function() {
       pickUpDateSummary.innerText = donationForm.elements.pickUpDate.value;
       pickUpTimeSummary.innerText = donationForm.elements.pickUpTime.value;
       commentsSummary.innerText = donationForm.elements.pickUpComment.value;
-      qtySummary.innerText = donationForm.elements.quantity.value + " worki";
-      institutionSummary.innerText ="Dla fundacji " + donationForm.elements.institution.value;
 
 
 
+      const allInstitutions = document.querySelectorAll(".institution");
 
+      allInstitutions.forEach((element, i) =>{
+
+        if (element.checked === true){
+          const chosenInstitution = document.querySelectorAll(".institution")[i];
+          institutionSummary.innerText ="Dla fundacji " + chosenInstitution.parentElement.children[2].children[0].innerHTML;
+        }
+      });
+
+      const allCategories = document.querySelectorAll(".categories");
+
+      let categories = [];
+      allCategories.forEach((element, i) =>{
+        if (element.checked === true){
+          const chosenCategory = document.querySelectorAll(".categories")[i];
+          categories.push(chosenCategory.parentElement.children[2].innerText);
+        }
+      })
+
+      qtySummary.innerText = donationForm.elements.quantity.value + " worki z kategorii:" + categories;
 
     }
 
