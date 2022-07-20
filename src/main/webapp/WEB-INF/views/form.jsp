@@ -39,12 +39,15 @@
                 <label>
                   <input type="checkbox" name="categories" value="${category.id}" id=" ${category.name}" class="categories"/>
                   <span class="checkbox"></span>
-                  <span class="description">
-                      ${category.name}
-                  </span>
+                  <span class="description">${category.name}</span>
                 </label>
               </div>
             </c:forEach>
+            <div class="form-group form-group--checkbox">
+              <form:errors path="categories"/>
+              <span id="categories" class="e"></span>
+            </div>
+
 
             <div class="form-group form-group--buttons">
               <button type="button" class="btn next-step">Dalej</button>
@@ -59,6 +62,7 @@
               <label>
                 Liczba 60l worków:
                 <form:input type="number" path="quantity" id="quantity"/>
+                <form:errors path="quantity"/>
               </label>
             </div>
 
@@ -87,6 +91,7 @@
                 </label>
               </div>
             </c:forEach>
+            <form:errors path="institution"/>
 
             <div class="form-group form-group--buttons">
               <button type="button" class="btn prev-step">Wstecz</button>
@@ -102,16 +107,19 @@
               <div class="form-section--column">
                 <h4>Adres odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Ulica <form:input path="street" type="text" name="street" /> </label>
+                  <label> Ulica <form:input path="street" type="text" name="street" />
+                    <form:errors path="street" cssClass="error-message"/></label>
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Miasto <form:input path="city" type="text" name="city" /> </label>
+                  <label> Miasto <form:input path="city" type="text" name="city" />
+                    <form:errors path="city" cssClass="error-message"/></label>
                 </div>
 
                 <div class="form-group form-group--inline">
                   <label>
                     Kod pocztowy <form:input path="zipCode" type="text" name="zipCode" />
+                    <form:errors path="zipCode" cssClass="error-message"/>
                   </label>
                 </div>
 
@@ -120,11 +128,13 @@
               <div class="form-section--column">
                 <h4>Termin odbioru</h4>
                 <div class="form-group form-group--inline">
-                  <label> Data <form:input path="pickUpDate" type="date" name="pickUpDate" /> </label>
+                  <label> Data <form:input path="pickUpDate" type="date" name="pickUpDate" />
+                    <form:errors path="pickUpDate" cssClass="error-message"/></label>
                 </div>
 
                 <div class="form-group form-group--inline">
-                  <label> Godzina <form:input path="pickUpTime" type="time" name="pickUpTime" /> </label>
+                  <label> Godzina <form:input path="pickUpTime" type="time" name="pickUpTime" />
+                    <form:errors path="pickUpTime" cssClass="error-message"/></label>
                 </div>
 
                 <div class="form-group form-group--inline">

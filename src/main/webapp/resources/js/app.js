@@ -194,18 +194,14 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
 
-      const allCategories = document.querySelectorAll(".categories");
+      const allCategories = document.querySelectorAll(".categories:checked");
 
       let categories = [];
       allCategories.forEach((element, i) =>{
-        if (element.checked === true){
-          const chosenCategory = document.querySelectorAll(".categories")[i];
-          categories.push(chosenCategory.parentElement.children[2].innerText);
-        }
+          categories.push(element.parentElement.querySelector(".description").innerText);
       })
 
-      qtySummary.innerText = donationForm.elements.quantity.value + " worki z kategorii:" + categories;
-
+      qtySummary.innerText = donationForm.elements.quantity.value + " worki z kategorii: " + categories.join(", ");
     }
 
   }

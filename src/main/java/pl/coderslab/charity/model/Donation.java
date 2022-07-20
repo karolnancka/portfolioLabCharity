@@ -3,9 +3,11 @@ package pl.coderslab.charity.model;
 
 
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -16,17 +18,28 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "quantity must be grater than 0")
+    @Positive
     private Integer quantity;
     @ManyToMany
+    @NotEmpty(message = "pick at least one category")
     private List<Category> categories;
     @ManyToOne
+    @NotNull(message = "pick at least one institution")
     private Institution institution;
+    @NotBlank(message = "insert street")
     private String street;
+    @NotBlank(message = "insert city")
     private String city;
+    @Pattern(regexp = "[0-9]{2}-[0-9]{3}")
+    @NotBlank(message = "insert zip code")
     private String zipCode;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "insert pickup date")
     private LocalDate pickUpDate;
+    @NotNull(message = "insert pickup time")
     private LocalTime pickUpTime;
+    @Length(max = 255)
     private String pickUpComment;
 
 
